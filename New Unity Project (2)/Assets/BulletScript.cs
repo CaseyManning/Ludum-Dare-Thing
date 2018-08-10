@@ -20,5 +20,9 @@ public class BulletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Translate(Vector3.up * Time.deltaTime * speed);
+
+		if(Mathf.Abs(transform.position.x) + Mathf.Abs(transform.position.y) > 50) {
+			Destroy(gameObject);
+		}
 	}
 }
