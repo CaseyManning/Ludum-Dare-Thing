@@ -16,4 +16,10 @@ public class EnemyScript : MonoBehaviour {
 		transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
 		transform.Translate(Vector3.forward * Time.deltaTime * speed);
 	}
+
+	private void OnCollisionEnter2D(Collision2D other) {
+		if(other.gameObject.tag == "Bullet") {
+			Debug.Log("I've been shot!");
+		}
+	}
 }
