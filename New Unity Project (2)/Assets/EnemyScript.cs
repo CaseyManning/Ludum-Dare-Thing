@@ -11,6 +11,8 @@ public class EnemyScript : MonoBehaviour {
 
 	int health = 3;
 
+	public Material deathMaterial;
+
 	// Use this for initialization
 	void Start () {
 		GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(50, 100), Random.Range(50, 100)));
@@ -23,7 +25,8 @@ public class EnemyScript : MonoBehaviour {
 			//transform.Translate(Vector3.up * Time.deltaTime * speed);
 			if(health <= 0) {
 				alive = false;
-				 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+				GetComponent<Renderer>().material = deathMaterial;
+				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 			}
 		}
 		
@@ -36,6 +39,7 @@ public class EnemyScript : MonoBehaviour {
 		}
 		if(transform.localScale.x < 0.05) {
 			GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemySpawning>().enemies.Remove(gameObject);
+			GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
 			Destroy(gameObject);
 		}
 	}
