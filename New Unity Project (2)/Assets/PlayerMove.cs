@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour {
 
 	public GameObject bullet;
 
-	public int bullets = 300;
+	public int bullets = 30000;
 
 	Rigidbody2D rigid;
 

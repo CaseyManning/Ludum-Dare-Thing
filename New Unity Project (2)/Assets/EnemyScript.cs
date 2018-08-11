@@ -64,7 +64,7 @@ public class EnemyScript : MonoBehaviour {
 				health -= 1;
 				Destroy(other.gameObject);
 			} else {
-				
+                Destroy(other.gameObject);
 			}
 		}
 	}
