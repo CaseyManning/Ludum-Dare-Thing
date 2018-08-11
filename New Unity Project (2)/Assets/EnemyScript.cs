@@ -15,7 +15,9 @@ public class EnemyScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(50, 100), Random.Range(50, 100)));
+        
+
+        GetComponent<Rigidbody2D>().AddForce(transform.forward * 100);
 		
 	}
 	

@@ -23,7 +23,16 @@ public class EnemySpawning : MonoBehaviour {
 		if(enemyCooldownTimer < 0) {
 			enemyCooldownTimer = enemyCooldown;
 			GameObject enemy = Instantiate(basicEnemy);
-			enemy.transform.position = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
+
+            Vector3 spawnPos = new Vector3(Random.Range(-20,20), Random.Range(-10,10), 0);
+            while (Vector3.Distance(spawnPos, new Vector3(0, 0, 0)) < 12){
+                spawnPos = new Vector3(Random.Range(-20, 20), Random.Range(-10, 10), 0);
+            }
+
+            enemy.transform.position = spawnPos;
+            enemy.transform.LookAt(new Vector3 (0,0,0));
+
+
 			for(int i = 0; i < enemies.Count; i++) {
 				Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), enemies[i].GetComponent<Collider2D>());
 			}
@@ -31,4 +40,5 @@ public class EnemySpawning : MonoBehaviour {
 			
 		}
 	}
+
 }
