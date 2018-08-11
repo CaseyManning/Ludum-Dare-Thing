@@ -6,8 +6,8 @@ public class EnemySpawning : MonoBehaviour {
 
 	public GameObject basicEnemy;
 
-	float enemyCooldown = 3;
-	float enemyCooldownTimer = 3;
+	float enemyCooldown = 2;
+	float enemyCooldownTimer = 2;
 
 	List<GameObject> enemies = new List<GameObject>();
 

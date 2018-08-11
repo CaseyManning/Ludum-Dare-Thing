@@ -29,14 +29,27 @@ public class EnemyScript : MonoBehaviour {
 		
 	}
 	private void FixedUpdate() {
-		if(transform.localScale.x < 5) {
+		if(transform.localScale.x < 5 && alive) {
 			transform.localScale = new Vector3(transform.localScale.x * 1.005f, transform.localScale.y * 1.005f, transform.localScale.z * 1.005f);
+		} else {
+			transform.localScale = new Vector3(transform.localScale.x * 0.995f, transform.localScale.y * 0.995f, transform.localScale.z * 0.995f);
+		}
+		if(transform.localScale.x < 0.001) {
+			Destroy(gameObject);
 		}
 	}
 
 	private void OnCollisionEnter2D(Collision2D other) {
 		if(other.gameObject.tag == "Player") {
 			SceneManager.LoadScene("End");
+		}
+		if(other.gameObject.tag == "Bullet") {
+			if(alive) {
+				health -= 1;
+				Destroy(other.gameObject);
+			} else {
+				
+			}
 		}
 	}
 }

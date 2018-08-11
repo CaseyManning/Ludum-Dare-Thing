@@ -27,8 +27,10 @@ public class PlayerMove : MonoBehaviour {
 
 		if(Input.GetKey("space") && shotCooldownTimer < 0) {
 			GameObject bul = Instantiate(bullet);
+			Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 			shotCooldownTimer = shotCooldown;
 			bullet.transform.position = transform.position;
+			// Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		}
 	}
 	private void FixedUpdate() {
