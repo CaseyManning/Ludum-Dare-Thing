@@ -34,7 +34,7 @@ public class EnemyScript : MonoBehaviour {
 		} else {
 			transform.localScale = new Vector3(transform.localScale.x * 0.995f, transform.localScale.y * 0.995f, transform.localScale.z * 0.995f);
 		}
-		if(transform.localScale.x < 0.001) {
+		if(transform.localScale.x < 0.05) {
 			Destroy(gameObject);
 		}
 	}
