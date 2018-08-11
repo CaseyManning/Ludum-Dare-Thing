@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c40a6bb387684e90bef20db4065d6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1562365636062604, guid: ae67c0a4dfde847a0b8b54ef416f24a2, type: 2}
+  bullet: {fileID: 1087441681710866, guid: f76b1090aed43409d96ad82f933355a3, type: 2}
   bullets: 30
 --- !u!23 &2111906199
 MeshRenderer:
