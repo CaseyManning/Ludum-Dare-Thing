@@ -7,13 +7,13 @@ public class PlayerMove : MonoBehaviour {
 	float accelerationSpeed = 100;
 	float maxSpeed = 3;
 
-	float shotCooldown = 0.3f;
+	float shotCooldown = 0.1f;
 
-	float shotCooldownTimer = 0.3f;
+	float shotCooldownTimer = 0.1f;
 
 	public GameObject bullet;
 
-	public int bullets = 30;
+	public int bullets = 300;
 
 	Rigidbody2D rigid;
 

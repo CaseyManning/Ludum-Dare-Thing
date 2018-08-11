@@ -6,8 +6,9 @@ public class EnemySpawning : MonoBehaviour {
 
 	public GameObject basicEnemy;
 
-	float enemyCooldown = 4;
-	float enemyCooldownTimer = 4;
+	float waveCooldown = 4;
+	float waveCooldownTimer = 4;
+    float spawnsPerWave = 3.0f;
 
 	public List<GameObject> enemies = new List<GameObject>();
 
@@ -18,16 +19,16 @@ public class EnemySpawning : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		enemyCooldownTimer -= Time.deltaTime;
+		waveCooldownTimer -= Time.deltaTime;
 
-		if(enemyCooldownTimer < 0) {
-			enemyCooldownTimer = enemyCooldown;
+		if(waveCooldownTimer < 0) {
+			waveCooldownTimer = waveCooldown;
 
-            SpawnEnemy();
-            SpawnEnemy();
-            SpawnEnemy();
-            SpawnEnemy();
-			
+            for (int i = 0; i < spawnsPerWave; i++){
+                SpawnEnemy();
+            }
+
+            spawnsPerWave += 0.5f;
 		}
 	}
 

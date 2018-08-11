@@ -17,7 +17,7 @@ public class EnemyScript : MonoBehaviour {
 	void Start () {
         
 		//GetComponent<Collider2D>()
-        GetComponent<Rigidbody2D>().AddForce(transform.forward * 100);
+        //GetComponent<Rigidbody2D>().AddForce(transform.forward * 100);
 		
 		foreach(GameObject g in GameObject.FindGameObjectsWithTag("Wall")) {
 			Physics2D.IgnoreCollision(g.GetComponent<Collider2D>(), GetComponent<Collider2D>());
@@ -27,7 +27,8 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(alive) {
-			//transform.Translate(Vector3.up * Time.deltaTime * speed);
+            transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
 			if(health <= 0) {
 				alive = false;
 				GetComponent<Renderer>().material = deathMaterial;
@@ -43,10 +44,10 @@ public class EnemyScript : MonoBehaviour {
 		
 	}
 	private void FixedUpdate() {
-		if(transform.localScale.x < 1.25 && alive) {
+		if(transform.localScale.x < 1 && alive) {
 			transform.localScale = new Vector3(transform.localScale.x * 1.005f, transform.localScale.y * 1.005f, transform.localScale.z * 1.005f);
         } else if(transform.localScale.x > 0) {
-			transform.localScale = new Vector3(transform.localScale.x * 0.995f, transform.localScale.y * 0.995f, transform.localScale.z * 0.995f);
+			transform.localScale = new Vector3(transform.localScale.x * 0.997f, transform.localScale.y * 0.997f, transform.localScale.z * 0.997f);
         } else {
          
         }
