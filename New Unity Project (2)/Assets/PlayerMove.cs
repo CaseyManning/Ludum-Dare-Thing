@@ -27,7 +27,7 @@ public class PlayerMove : MonoBehaviour {
 
 		shotCooldownTimer -= Time.deltaTime;
 
-		if(Input.GetKey("space") && shotCooldownTimer < 0 && bullets > 0) {
+        if (Input.GetAxis("Fire1") > 0 && shotCooldownTimer < 0 && bullets > 0) {
 			GameObject bul = Instantiate(bullet);
 			bullets -= 1;
 			Physics2D.IgnoreCollision(bul.GetComponent<Collider2D>(), GetComponent<Collider2D>());
