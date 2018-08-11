@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour {
 		rigid.AddForce(movement);
 		rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, maxSpeed);
 
-		if(Input.anyKey == false) {
+        if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) {
 			rigid.velocity = new Vector2(0, 0);
 		}
 	}
