@@ -35,7 +35,7 @@ public class EnemyScript : MonoBehaviour {
 			    
             }
 		}
-		if(Mathf.Sqrt(transform.position.x * transform.position.x + transform.position.x * transform.position.y * transform.position.x * transform.position.y) < 5) {
+		if(transform.position.x > -8 && transform.position.x < 8 && transform.position.y < 4 && transform.position.y > -4) {
 			foreach(GameObject g in GameObject.FindGameObjectsWithTag("Wall")) {
 				Physics2D.IgnoreCollision(g.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
 			}
