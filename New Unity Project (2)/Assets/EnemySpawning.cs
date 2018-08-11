@@ -9,6 +9,8 @@ public class EnemySpawning : MonoBehaviour {
 	float enemyCooldown = 3;
 	float enemyCooldownTimer = 3;
 
+	List<GameObject> enemies = new List<GameObject>();
+
 	// Use this for initialization
 	void Start () {
 
@@ -22,7 +24,10 @@ public class EnemySpawning : MonoBehaviour {
 			enemyCooldownTimer = enemyCooldown;
 			GameObject enemy = Instantiate(basicEnemy);
 			enemy.transform.position = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0);
-
+			for(int i = 0; i < enemies.Count; i++) {
+				Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), enemies[i].GetComponent<Collider2D>());
+			}
+			enemies.Add(enemy);
 			
 		}
 	}
