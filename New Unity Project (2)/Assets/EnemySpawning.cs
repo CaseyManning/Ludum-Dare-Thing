@@ -9,7 +9,7 @@ public class EnemySpawning : MonoBehaviour {
 	float enemyCooldown = 2;
 	float enemyCooldownTimer = 2;
 
-	List<GameObject> enemies = new List<GameObject>();
+	public List<GameObject> enemies = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {

@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour {
 
-	float speed = 2;
+	float speed = 3;
 
 	bool alive = true;
 
 	int health = 3;
+
+	public Material deathMaterial;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +27,8 @@ public class EnemyScript : MonoBehaviour {
 			//transform.Translate(Vector3.up * Time.deltaTime * speed);
 			if(health <= 0) {
 				alive = false;
-				 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+				GetComponent<Renderer>().material = deathMaterial;
+				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 			}
 		}
 		
@@ -37,6 +40,8 @@ public class EnemyScript : MonoBehaviour {
 			transform.localScale = new Vector3(transform.localScale.x * 0.995f, transform.localScale.y * 0.995f, transform.localScale.z * 0.995f);
 		}
 		if(transform.localScale.x < 0.05) {
+			GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemySpawning>().enemies.Remove(gameObject);
+			GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
 			Destroy(gameObject);
 		}
 	}

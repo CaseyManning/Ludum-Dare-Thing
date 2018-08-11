@@ -13,6 +13,8 @@ public class PlayerMove : MonoBehaviour {
 
 	public GameObject bullet;
 
+	public int bullets = 30;
+
 	Rigidbody2D rigid;
 
 	// Use this for initialization
@@ -25,8 +27,9 @@ public class PlayerMove : MonoBehaviour {
 
 		shotCooldownTimer -= Time.deltaTime;
 
-		if(Input.GetKey("space") && shotCooldownTimer < 0) {
+		if(Input.GetKey("space") && shotCooldownTimer < 0 && bullets > 0) {
 			GameObject bul = Instantiate(bullet);
+			bullets -= 1;
 			Physics2D.IgnoreCollision(bul.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 			shotCooldownTimer = shotCooldown;
 			bullet.transform.position = transform.position;
