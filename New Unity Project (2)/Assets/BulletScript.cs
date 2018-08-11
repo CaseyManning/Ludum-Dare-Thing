@@ -8,8 +8,9 @@ public class BulletScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
 		Vector3 mousePosition;
-		mousePosition = Input.mousePosition;           
+		mousePosition = Input.mousePosition;          
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
  
         Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition, Vector3.forward );
