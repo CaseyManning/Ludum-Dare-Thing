@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
-	float speed = 5;
+	float speed = 2;
 
 	bool alive = true;
 
