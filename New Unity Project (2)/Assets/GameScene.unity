@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicEnemy: {fileID: 1033326718835364, guid: 89190f6ed58904104b64f0060a823c36, type: 2}
+  enemies: []
 --- !u!4 &429619373
 Transform:
   m_ObjectHideFlags: 0
@@ -859,6 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1562365636062604, guid: ae67c0a4dfde847a0b8b54ef416f24a2, type: 2}
+  bullets: 30
 --- !u!23 &2111906199
 MeshRenderer:
   m_ObjectHideFlags: 0
