@@ -32,7 +32,7 @@ public class EnemyScript : MonoBehaviour {
 			if(health <= 0) {
 				alive = false;
 				GetComponent<Renderer>().material = deathMaterial;
-				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+				// GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
             }
 		}
@@ -46,10 +46,6 @@ public class EnemyScript : MonoBehaviour {
 	private void FixedUpdate() {
 		if(transform.localScale.x < 1 && alive) {
 			transform.localScale = new Vector3(transform.localScale.x * 1.005f, transform.localScale.y * 1.005f, transform.localScale.z * 1.005f);
-        } else if(transform.localScale.x > 0) {
-			transform.localScale = new Vector3(transform.localScale.x * 0.997f, transform.localScale.y * 0.997f, transform.localScale.z * 0.997f);
-        } else {
-         
         }
 		if(transform.localScale.x < 0.05) {
 			GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemySpawning>().enemies.Remove(gameObject);
