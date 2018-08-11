@@ -16,9 +16,12 @@ public class EnemyScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         
-
+		//GetComponent<Collider2D>()
         GetComponent<Rigidbody2D>().AddForce(transform.forward * 100);
 		
+		foreach(GameObject g in GameObject.FindGameObjectsWithTag("Wall")) {
+			Physics2D.IgnoreCollision(g.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+		}
 	}
 	
 	// Update is called once per frame
@@ -31,10 +34,15 @@ public class EnemyScript : MonoBehaviour {
 				GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 			}
 		}
+		if(Mathf.Sqrt(transform.position.x * transform.position.x + transform.position.x * transform.position.y * transform.position.x * transform.position.y) < 3) {
+			foreach(GameObject g in GameObject.FindGameObjectsWithTag("Wall")) {
+				Physics2D.IgnoreCollision(g.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+			}
+		}
 		
 	}
 	private void FixedUpdate() {
-		if(transform.localScale.x < 5 && alive) {
+		if(transform.localScale.x < 3 && alive) {
 			transform.localScale = new Vector3(transform.localScale.x * 1.005f, transform.localScale.y * 1.005f, transform.localScale.z * 1.005f);
 		} else {
 			transform.localScale = new Vector3(transform.localScale.x * 0.995f, transform.localScale.y * 0.995f, transform.localScale.z * 0.995f);
