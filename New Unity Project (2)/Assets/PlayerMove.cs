@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour {
 
-	float speed = 100;
+	float accelerationSpeed = 100;
+	float maxSpeed = 3;
 
 	float shotCooldown = 0.3f;
 
@@ -24,12 +25,6 @@ public class PlayerMove : MonoBehaviour {
 
 		shotCooldownTimer -= Time.deltaTime;
 
-		float xSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-		float ySpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-		// transform.Translate(xSpeed, ySpeed, 0);
-		// rigid.velocity = new Vector2(xSpeed, ySpeed);
-		// rigid.AddForce(new Vector2(xSpeed, ySpeed));
-
 		if(Input.GetKey("space") && shotCooldownTimer < 0) {
 			GameObject bul = Instantiate(bullet);
 			shotCooldownTimer = shotCooldown;
@@ -43,9 +38,12 @@ public class PlayerMove : MonoBehaviour {
 
 		float moveHorizontal = Input.GetAxis("Horizontal");
 		float moveVertical = Input.GetAxis("Vertical");
-		Vector2 movement = new Vector2(moveHorizontal * speed, moveVertical * speed);
+		Vector2 movement = new Vector2(moveHorizontal * accelerationSpeed, moveVertical * accelerationSpeed);
 		rigid.AddForce(movement);
-		rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, 3);
+		rigid.velocity = Vector3.ClampMagnitude(rigid.velocity, maxSpeed);
 
+		if(Input.anyKey == false) {
+			rigid.velocity = new Vector2(0, 0);
+		}
 	}
 }
