@@ -34,7 +34,7 @@ public class EnemySpawning : MonoBehaviour {
 
 
 			for(int i = 0; i < enemies.Count; i++) {
-				Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), enemies[i].GetComponent<Collider2D>());
+				//Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), enemies[i].GetComponent<Collider2D>());
 			}
 			enemies.Add(enemy);
 			
