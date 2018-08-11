@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour {
 
-	float speed = 2;
+	float speed = 3;
 
 	bool alive = true;
 
@@ -35,6 +35,7 @@ public class EnemyScript : MonoBehaviour {
 			transform.localScale = new Vector3(transform.localScale.x * 0.995f, transform.localScale.y * 0.995f, transform.localScale.z * 0.995f);
 		}
 		if(transform.localScale.x < 0.05) {
+			GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemySpawning>().enemies.Remove(gameObject);
 			Destroy(gameObject);
 		}
 	}
