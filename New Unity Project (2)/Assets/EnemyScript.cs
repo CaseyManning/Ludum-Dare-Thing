@@ -40,9 +40,6 @@ public class EnemyScript : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
-		if(other.gameObject.tag == "Player") {
-			SceneManager.LoadScene("End");
-		}
 		if(other.gameObject.tag == "Bullet") {
 			if(alive) {
 				health -= 1;
@@ -50,6 +47,11 @@ public class EnemyScript : MonoBehaviour {
 			} else {
 				
 			}
+		}
+	}
+	private void OnCollisionEnter2D(Collision2D other) {
+		if(other.gameObject.tag == "Player") {
+			SceneManager.LoadScene("End");
 		}
 	}
 }
