@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour {
 	float shotCooldownTimer = 0.2f;
 
 	public GameObject bullet;
+	public GameObject superBullet;
 
 	public int bullets = 30000;
 
@@ -35,6 +36,10 @@ public class PlayerMove : MonoBehaviour {
 			shotCooldownTimer = shotCooldown;
 			bullet.transform.position = transform.position;
 			// Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+		}
+		if(Input.GetKey("q")) {
+			GameObject spoop = Instantiate(superBullet);
+			spoop.transform.position = transform.position;
 		}
 	}
 	private void FixedUpdate() {
