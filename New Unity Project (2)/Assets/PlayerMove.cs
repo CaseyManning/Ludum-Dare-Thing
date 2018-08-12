@@ -7,9 +7,9 @@ public class PlayerMove : MonoBehaviour {
 	float accelerationSpeed = 100;
 	float maxSpeed = 3;
 
-	float shotCooldown = 0.1f;
+	float shotCooldown = 0.2f;
 
-	float shotCooldownTimer = 0.1f;
+	float shotCooldownTimer = 0.2f;
 
 	public GameObject bullet;
 
