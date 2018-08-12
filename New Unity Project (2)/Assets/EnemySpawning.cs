@@ -10,8 +10,6 @@ public class EnemySpawning : MonoBehaviour {
 	float waveCooldownTimer = 4;
     float spawnsPerWave = 3.0f;
 
-	public List<GameObject> enemies = new List<GameObject>();
-
 	// Use this for initialization
 	void Start () {
 		GetComponent<AudioSource>().loop = true;
@@ -45,13 +43,6 @@ public class EnemySpawning : MonoBehaviour {
 
         enemy.transform.position = spawnPos;
         enemy.transform.LookAt(new Vector3(0, 0, 0));
-
-
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            //Physics2D.IgnoreCollision(enemy.GetComponent<Collider2D>(), enemies[i].GetComponent<Collider2D>());
-        }
-        enemies.Add(enemy);
     }
 
 }

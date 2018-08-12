@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour {
 
@@ -12,6 +13,8 @@ public class EnemyScript : MonoBehaviour {
 	int health = 3;
 
 	public Material deathMaterial;
+
+	int score = 0;
 
 	// Use this for initialization
 	void Start () {
