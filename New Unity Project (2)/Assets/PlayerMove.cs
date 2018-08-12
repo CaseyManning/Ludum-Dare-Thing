@@ -16,6 +16,13 @@ public class PlayerMove : MonoBehaviour {
 
 	public int bullets = 30000;
 
+	float spuperCooldown = 5;
+	float spuperCooldownTimer = 0;
+
+	float spuperShootingTimer = 0.25f;
+	float spuperShootingTimerTimer = 0.25f;
+	bool isSpupering = false;
+
 	Rigidbody2D rigid;
 
 	// Use this for initialization
@@ -27,6 +34,7 @@ public class PlayerMove : MonoBehaviour {
 	void Update () {
 
 		shotCooldownTimer -= Time.deltaTime;
+		spuperCooldownTimer -= Time.deltaTime;
 
         if (Input.GetAxis("Fire1") > 0 && shotCooldownTimer < 0 && bullets > 0) {
 			GameObject bul = Instantiate(bullet);
@@ -37,9 +45,19 @@ public class PlayerMove : MonoBehaviour {
 			bullet.transform.position = transform.position;
 			// Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		}
-		if(Input.GetKey("q")) {
+		if(Input.GetKey("q") && spuperCooldownTimer < 0) {
+			spuperCooldownTimer = spuperCooldown;
+			isSpupering = true;
+			spuperShootingTimerTimer = spuperShootingTimer;
+		}
+
+		if(isSpupering) {
+			spuperShootingTimerTimer -= Time.deltaTime;
 			GameObject spoop = Instantiate(superBullet);
 			spoop.transform.position = transform.position;
+			if(spuperShootingTimerTimer < 0) {
+				isSpupering = false;
+			}
 		}
 	}
 	private void FixedUpdate() {
