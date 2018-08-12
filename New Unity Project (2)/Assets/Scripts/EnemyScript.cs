@@ -40,6 +40,8 @@ public class EnemyScript : MonoBehaviour {
             transform.Translate(Vector3.Normalize(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position) * Time.deltaTime * speed);
 			if(health <= 0) {
 				alive = false;
+				GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;
+				GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().scoreTimer = 0;
 				GetComponent<Renderer>().material = deathMaterial;
 				// GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class TextScript : MonoBehaviour {
 
-	int score;
+	public int score;
 
-	float scoreTimer = 1;
+	public float scoreTimer = 2;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,7 @@ public class TextScript : MonoBehaviour {
 		if(scoreTimer < 0) {
 			score += 1;
 			GetComponent<Text>().text = "Score: " + score;
-			scoreTimer = 1;
+			scoreTimer = 2;
 		}
 	}
 }
