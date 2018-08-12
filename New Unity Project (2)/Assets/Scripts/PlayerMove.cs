@@ -55,6 +55,15 @@ public class PlayerMove : MonoBehaviour {
 			spuperShootingTimerTimer -= Time.deltaTime;
 			GameObject spoop = Instantiate(superBullet);
 			spoop.transform.position = transform.position;
+
+			GameObject spoop2 = Instantiate(superBullet);
+			spoop.transform.position = transform.position;
+			spoop2.transform.Rotate(0, 0, 90);
+
+			GameObject spoop3 = Instantiate(superBullet);
+			spoop.transform.position = transform.position;
+			spoop3.transform.Rotate(0, 0, -90);
+
 			if(spuperShootingTimerTimer < 0) {
 				isSpupering = false;
 			}
