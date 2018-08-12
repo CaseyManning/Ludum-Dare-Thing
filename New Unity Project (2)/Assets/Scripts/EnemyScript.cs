@@ -73,6 +73,9 @@ public class EnemyScript : MonoBehaviour {
 		} else if(other.gameObject.tag == "SpuperBullet") {
 			health -= 1;
 		}
+		if(other.gameObject.tag == "SpuperBullet" && alive == false) {
+			Destroy(gameObject);
+		}
 	}
 	private void OnCollisionEnter2D(Collision2D other) {
 		if(other.gameObject.tag == "Player" && alive) {
