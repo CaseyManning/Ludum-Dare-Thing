@@ -27,8 +27,14 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(alive) {
+			// float z = transform.rotation.eulerAngles.z;
             transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+
+			float playerX = GameObject.FindGameObjectWithTag("Player").transform.position.x;
+			float playerY = GameObject.FindGameObjectWithTag("Player").transform.position.y;
+			transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(playerY - transform.position.y, playerX - transform.position.x));
+
+            transform.Translate(Vector3.Normalize(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position) * Time.deltaTime * speed);
 			if(health <= 0) {
 				alive = false;
 				GetComponent<Renderer>().material = deathMaterial;
@@ -44,14 +50,11 @@ public class EnemyScript : MonoBehaviour {
 		
 	}
 	private void FixedUpdate() {
-		if(transform.localScale.x < 1 && alive) {
-			transform.localScale = new Vector3(transform.localScale.x * 1.005f, transform.localScale.y * 1.005f, transform.localScale.z * 1.005f);
-        }
-		if(transform.localScale.x < 0.05) {
-			GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemySpawning>().enemies.Remove(gameObject);
-			GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
-			Destroy(gameObject);
-		}
+		// if(transform.localScale.x < 0.05) {
+		// 	GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemySpawning>().enemies.Remove(gameObject);
+		// 	GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
+		// 	Destroy(gameObject);
+		// }
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
