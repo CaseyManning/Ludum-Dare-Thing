@@ -11,14 +11,14 @@ public class TextScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		scoreTimer -= Time.deltaTime;
 		if(scoreTimer < 0) {
-			score += 1;
+			//score += 1;
 			GetComponent<Text>().text = "Score: " + score;
 			scoreTimer = 2;
 		}
