@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
 
-	float speed = 42;
+	float speed = 20;
 
 	// Use this for initialization
 	void Start () {
