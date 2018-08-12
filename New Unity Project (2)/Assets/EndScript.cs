@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class EndScript : MonoBehaviour {
 
 
-	float timer = 2;
+	float timer = 1;
 
 	// Use this for initialization
 	void Start () {
