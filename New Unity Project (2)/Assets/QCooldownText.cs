@@ -13,8 +13,8 @@ public class QCooldownText : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		int cooldown = (int) GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().spuperCooldownTimer;
-		if(cooldown > 0) {
-			GetComponent<Text>().text = "Q Cooldown: " + cooldown;
+		if(cooldown >= 0) {
+			GetComponent<Text>().text = "Q Cooldown: " + (cooldown + 1);
 		} else {
 			GetComponent<Text>().text = "Q Cooldown: Ready";
 		}

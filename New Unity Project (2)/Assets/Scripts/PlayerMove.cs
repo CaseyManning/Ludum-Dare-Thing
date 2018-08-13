@@ -20,6 +20,12 @@ public class PlayerMove : MonoBehaviour {
 	GameObject spoop5;
 	GameObject spoop6;
 	GameObject spoop7;
+	GameObject spoop8;
+	GameObject spoop9;
+	GameObject spoop10;
+	GameObject spoop11;
+	GameObject spoop12;
+	GameObject spoop13;
 
 	public int bullets = 30000;
 
@@ -55,28 +61,18 @@ public class PlayerMove : MonoBehaviour {
 			spoop.transform.position = transform.position;
 
 			spoop2 = Instantiate(superBullet);
-			spoop.transform.position = transform.position;
-			// spoop2.transform.Rotate(0, 0, 90);
-
 			spoop3 = Instantiate(superBullet);
-			spoop.transform.position = transform.position;
-			// spoop3.transform.Rotate(0, 0, -90);
-
 			spoop4 = Instantiate(superBullet);
-			spoop.transform.position = transform.position;
-			// spoop2.transform.Rotate(0, 0, 90);
-
 			spoop5 = Instantiate(superBullet);
-			spoop.transform.position = transform.position;
-			// spoop3.transform.Rotate(0, 0, -90);
-
 			spoop6 = Instantiate(superBullet);
-			spoop.transform.position = transform.position;
-			// spoop2.transform.Rotate(0, 0, 90);
-
 			spoop7 = Instantiate(superBullet);
-			spoop.transform.position = transform.position;
-			// spoop3.transform.Rotate(0, 0, -90);
+			spoop8 = Instantiate(superBullet);
+			spoop9 = Instantiate(superBullet);
+			spoop10 = Instantiate(superBullet);
+			spoop11 = Instantiate(superBullet);
+			spoop12 = Instantiate(superBullet);
+			spoop13 = Instantiate(superBullet);
+
 
 			StartCoroutine(your_timer());
 		}
@@ -90,6 +86,12 @@ public class PlayerMove : MonoBehaviour {
 		spoop5.transform.Rotate(0, 0, -2);
 		spoop6.transform.Rotate(0, 0, 4);
 		spoop7.transform.Rotate(0, 0, -4);
+		spoop8.transform.Rotate(0, 0, 1);
+		spoop9.transform.Rotate(0, 0, -1);
+		spoop10.transform.Rotate(0, 0, 3);
+		spoop11.transform.Rotate(0, 0, -3);
+		spoop12.transform.Rotate(0, 0, 5);
+		spoop13.transform.Rotate(0, 0, -5);
 	}
 
 	private void FixedUpdate() {
