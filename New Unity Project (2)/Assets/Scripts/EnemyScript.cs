@@ -77,7 +77,9 @@ public class EnemyScript : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		if(other.gameObject.tag == "SpuperBullet" && alive == false) {
+            GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;
 			Destroy(gameObject);
+
 		}
 	}
 	private void OnCollisionEnter2D(Collision2D other) {
