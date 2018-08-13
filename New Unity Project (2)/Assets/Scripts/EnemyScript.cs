@@ -73,14 +73,20 @@ public class EnemyScript : MonoBehaviour {
                 Destroy(other.gameObject);
 			}
 		} else if(other.gameObject.tag == "SpuperBullet") {
-			health -= 1;
-			Destroy(gameObject);
+			alive = false;
+			GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;
+			GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().scoreTimer = 0;
+			GetComponent<Renderer>().material = deathMaterial;
+			// GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+			GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
+			Rigidbody2D rb = GetComponent<Rigidbody2D>();
+			rb.mass = 10;
 		}
-		if(other.gameObject.tag == "SpuperBullet" && alive == false) {
-            GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;
-			Destroy(gameObject);
+		// if(other.gameObject.tag == "SpuperBullet" && alive == false) {
+        //     GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;
+		// 	Destroy(gameObject);
 
-		}
+		// }
 	}
 	private void OnCollisionEnter2D(Collision2D other) {
 		if(other.gameObject.tag == "Player" && alive) {
