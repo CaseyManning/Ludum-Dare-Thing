@@ -7,9 +7,9 @@ public class PlayerMove : MonoBehaviour {
 	float accelerationSpeed = 100;
 	float maxSpeed = 3;
 
-	float shotCooldown = 0.2f;
+	float shotCooldown = 0.1875f;
 
-	float shotCooldownTimer = 0.2f;
+	float shotCooldownTimer = 0.1f;
 
 	public GameObject bullet;
 	public GameObject superBullet;
@@ -47,7 +47,9 @@ public class PlayerMove : MonoBehaviour {
 
         if (Input.GetAxis("Fire1") > 0 && shotCooldownTimer < 0 && bullets > 0) {
 			GameObject bul = Instantiate(bullet);
-			// bullets -= 1;
+            // bullets -= 1;
+            GetComponent<AudioSource>().volume = Random.Range(-0.05f, 0.05f) + 0.25f;
+            GetComponent<AudioSource>().pitch = Random.Range(-0.1f, 0.1f) + 1.0f;
 			GetComponent<AudioSource>().Play();
 			Physics2D.IgnoreCollision(bul.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 			shotCooldownTimer = shotCooldown;

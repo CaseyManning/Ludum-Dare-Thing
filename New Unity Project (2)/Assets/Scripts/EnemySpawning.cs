@@ -28,6 +28,9 @@ public class EnemySpawning : MonoBehaviour {
             }
 
             spawnsPerWave += 0.3f;
+            if(spawnsPerWave > 6){
+                spawnsPerWave = 6;
+            }
 		}
 	}
 
