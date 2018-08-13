@@ -8,7 +8,12 @@ public class GameOverTextScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        scoreKeeper = FindObjectOfType<ScoreKeeperScript>();
+        try {
+            scoreKeeper = FindObjectsOfType<ScoreKeeperScript>()[0];
+            print("found first!");
+        } catch {
+            scoreKeeper = FindObjectOfType<ScoreKeeperScript>();
+        }
         GetComponent<UnityEngine.UI.Text>().text = "Score: " + scoreKeeper.GetComponent<ScoreKeeperScript>().scoreKept;
 	}
 	

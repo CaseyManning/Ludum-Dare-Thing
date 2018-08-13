@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndScript : MonoBehaviour {
 
-	float switchCooldown = 1;
+	float switchCooldown = 2;
 
 	// Use this for initialization
 	void Start () {

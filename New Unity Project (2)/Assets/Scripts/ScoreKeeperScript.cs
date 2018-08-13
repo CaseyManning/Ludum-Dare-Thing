@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreKeeperScript : MonoBehaviour {
 
@@ -17,4 +18,25 @@ public class ScoreKeeperScript : MonoBehaviour {
 	void Update () {
         scoreKept = scoreText.GetComponent<TextScript>().score;
 	}
+
+
+    // Below code destroys scorekeeper after end scene (when StartMenu is loaded)
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "StartScene")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }

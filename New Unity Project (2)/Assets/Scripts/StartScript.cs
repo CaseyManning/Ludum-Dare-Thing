@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartScript : MonoBehaviour {
 
+    float switchCooldown = 1;
 	// Use this for initialization
 	void Start () {
 		
@@ -12,8 +13,11 @@ public class StartScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.anyKey) {
-			SceneManager.LoadScene("GameScene");
-		}
+        switchCooldown -= Time.deltaTime;
+
+        if (Input.anyKey && switchCooldown < 0)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
 	}
 }
