@@ -74,6 +74,7 @@ public class EnemyScript : MonoBehaviour {
 			}
 		} else if(other.gameObject.tag == "SpuperBullet") {
 			health -= 1;
+			Destroy(gameObject);
 		}
 		if(other.gameObject.tag == "SpuperBullet" && alive == false) {
 			Destroy(gameObject);
