@@ -68,10 +68,17 @@ public class EnemyScript : MonoBehaviour {
 		if(other.gameObject.tag == "Bullet") {
 			if(alive) {
 				health -= 1;
-				Destroy(other.gameObject);
-			} else {
-                Destroy(other.gameObject);
 			}
+            //Play bullet particle system on impact
+            ParticleSystem psystem = other.GetComponent<ParticleSystem>();
+            psystem.Play();
+            //Set bullet speed to 0
+            other.GetComponent<BulletScript>().speed = 0;
+            //Hide mesh renderer
+            other.GetComponent<MeshRenderer>().enabled = false;
+            //Destroy bullet in 0.2 seconds (after particles have played)
+            Destroy(other.gameObject, 0.2f);
+
 		} else if(other.gameObject.tag == "SpuperBullet") {
 			alive = false;
 			GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;

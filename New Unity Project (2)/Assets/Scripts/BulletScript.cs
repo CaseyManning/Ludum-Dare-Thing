@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
 
-	float speed = 20;
+	public float speed = 30;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +16,7 @@ public class BulletScript : MonoBehaviour {
 
         /*Quaternion rot = Quaternion.LookRotation(transform.position - mousePosition, Vector3.forward );
         transform.rotation = rot;  
-        transform.eulerAngles = new Vector3(0, 0,transform.eulerAngles.z); benlee was here*/
+        transform.eulerAngles = new Vector3(0, 0,transform.eulerAngles.z); ben was here*/
         transform.LookAt(mousePosition, new Vector3(0, 0, 1));
 
 	}
