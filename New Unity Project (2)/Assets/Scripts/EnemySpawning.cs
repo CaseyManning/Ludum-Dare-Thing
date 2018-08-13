@@ -8,7 +8,7 @@ public class EnemySpawning : MonoBehaviour {
 
 	float waveCooldown = 4;
 	float waveCooldownTimer = 0;
-    float spawnsPerWave = 3.0f;
+    float spawnsPerWave = 1.0f;
 
 	// Use this for initialization
 	void Start () {

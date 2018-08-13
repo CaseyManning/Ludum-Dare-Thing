@@ -39,14 +39,7 @@ public class EnemyScript : MonoBehaviour {
 
             transform.Translate(Vector3.Normalize(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position) * Time.deltaTime * speed);
 			if(health <= 0) {
-				alive = false;
-				GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;
-				GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().scoreTimer = 0;
-				GetComponent<Renderer>().material = deathMaterial;
-				// GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
-                Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                rb.mass = 10;
+				death();
             }
 		}
 		if(transform.position.x > -8 && transform.position.x < 8 && transform.position.y < 4 && transform.position.y > -4) {
@@ -56,12 +49,17 @@ public class EnemyScript : MonoBehaviour {
 		}
 		
 	}
-	private void FixedUpdate() {
-		// if(transform.localScale.x < 0.05) {
-		// 	GameObject.FindGameObjectWithTag("Respawn").GetComponent<EnemySpawning>().enemies.Remove(gameObject);
-		// 	GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
-		// 	Destroy(gameObject);
-		// }
+
+	private void death() {
+		alive = false;
+		GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;
+		GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().scoreTimer = 0;
+		GetComponent<Renderer>().material = deathMaterial;
+		// GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+		GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
+		Rigidbody2D rb = GetComponent<Rigidbody2D>();
+		rb.mass = 10;
+		GetComponent<ParticleSystem>().Play();
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
@@ -79,15 +77,8 @@ public class EnemyScript : MonoBehaviour {
             //Destroy bullet in 0.2 seconds (after particles have played)
             Destroy(other.gameObject, 0.2f);
 
-		} else if(other.gameObject.tag == "SpuperBullet") {
-			alive = false;
-			GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;
-			GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().scoreTimer = 0;
-			GetComponent<Renderer>().material = deathMaterial;
-			// GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-			GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>().bullets += 5;
-			Rigidbody2D rb = GetComponent<Rigidbody2D>();
-			rb.mass = 10;
+		} else if(other.gameObject.tag == "SpuperBullet" && alive) {
+			death();
 		}
 		// if(other.gameObject.tag == "SpuperBullet" && alive == false) {
         //     GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextScript>().score += 5;
