@@ -14,14 +14,17 @@ public class PlayerMove : MonoBehaviour {
 	public GameObject bullet;
 	public GameObject superBullet;
 
+	GameObject spoop2;
+	GameObject spoop3;
+	GameObject spoop4;
+	GameObject spoop5;
+	GameObject spoop6;
+	GameObject spoop7;
+
 	public int bullets = 30000;
 
 	float spuperCooldown = 5;
 	float spuperCooldownTimer = 0;
-
-	float spuperShootingTimer = 0.25f;
-	float spuperShootingTimerTimer = 0.25f;
-	bool isSpupering = false;
 
 	Rigidbody2D rigid;
 
@@ -46,29 +49,49 @@ public class PlayerMove : MonoBehaviour {
 			// Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		}
 		if(Input.GetKey("q") && spuperCooldownTimer < 0) {
-			spuperCooldownTimer = spuperCooldown;
-			isSpupering = true;
-			spuperShootingTimerTimer = spuperShootingTimer;
-		}
 
-		if(isSpupering) {
-			spuperShootingTimerTimer -= Time.deltaTime;
+			spuperCooldownTimer = spuperCooldown;
 			GameObject spoop = Instantiate(superBullet);
 			spoop.transform.position = transform.position;
 
-			GameObject spoop2 = Instantiate(superBullet);
+			spoop2 = Instantiate(superBullet);
 			spoop.transform.position = transform.position;
-			spoop2.transform.Rotate(0, 0, 90);
+			// spoop2.transform.Rotate(0, 0, 90);
 
-			GameObject spoop3 = Instantiate(superBullet);
+			spoop3 = Instantiate(superBullet);
 			spoop.transform.position = transform.position;
-			spoop3.transform.Rotate(0, 0, -90);
+			// spoop3.transform.Rotate(0, 0, -90);
 
-			if(spuperShootingTimerTimer < 0) {
-				isSpupering = false;
-			}
+			spoop4 = Instantiate(superBullet);
+			spoop.transform.position = transform.position;
+			// spoop2.transform.Rotate(0, 0, 90);
+
+			spoop5 = Instantiate(superBullet);
+			spoop.transform.position = transform.position;
+			// spoop3.transform.Rotate(0, 0, -90);
+
+			spoop6 = Instantiate(superBullet);
+			spoop.transform.position = transform.position;
+			// spoop2.transform.Rotate(0, 0, 90);
+
+			spoop7 = Instantiate(superBullet);
+			spoop.transform.position = transform.position;
+			// spoop3.transform.Rotate(0, 0, -90);
+
+			StartCoroutine(your_timer());
 		}
 	}
+
+	IEnumerator your_timer() {
+		yield return new WaitForSeconds(0.01f);
+		spoop2.transform.Rotate(0, 0, 6);
+		spoop3.transform.Rotate(0, 0, -6);
+		spoop4.transform.Rotate(0, 0, 2);
+		spoop5.transform.Rotate(0, 0, -2);
+		spoop6.transform.Rotate(0, 0, 4);
+		spoop7.transform.Rotate(0, 0, -4);
+	}
+
 	private void FixedUpdate() {
 		// float xSpeed = Input.GetAxis("Horizontal") * speed * 30 * Time.deltaTime;
 		// float ySpeed = Input.GetAxis("Vertical") * speed * 30 * Time.deltaTime;
