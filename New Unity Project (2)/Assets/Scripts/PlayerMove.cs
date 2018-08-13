@@ -23,8 +23,8 @@ public class PlayerMove : MonoBehaviour {
 
 	public int bullets = 30000;
 
-	float spuperCooldown = 5;
-	float spuperCooldownTimer = 0;
+	float spuperCooldown = 6;
+	public float spuperCooldownTimer = 0;
 
 	Rigidbody2D rigid;
 

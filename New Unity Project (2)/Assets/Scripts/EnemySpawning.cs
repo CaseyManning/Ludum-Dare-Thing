@@ -27,7 +27,7 @@ public class EnemySpawning : MonoBehaviour {
                 SpawnEnemy();
             }
 
-            spawnsPerWave += 0.5f;
+            spawnsPerWave += 0.3f;
 		}
 	}
 
