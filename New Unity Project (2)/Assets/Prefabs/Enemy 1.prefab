@@ -92,6 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathMaterial: {fileID: 2100000, guid: 2bf6c6330bdf244d284885d98025a521, type: 2}
+  warningSymbolGameObject: {fileID: 1370952865931948, guid: 30b60e97c5ac54ccca37495b2629b9a6,
+    type: 2}
 --- !u!198 &198132223172590378
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -4775,7 +4777,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 696d9e6be6b7946379bc4399fa56c898, type: 3}
-  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -3,7 +3,10 @@ guid: 9b641ca7af6a544859e5ef3619e53655
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deathMaterial: {instanceID: 0}
+  - warningSymbolGameObject: {fileID: 1370952865931948, guid: 30b60e97c5ac54ccca37495b2629b9a6,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
